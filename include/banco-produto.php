@@ -4,6 +4,16 @@ function insereProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usad
 	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$nome}', {$preco}, '{$descricao}', {$categoria_id}, {$usado})";
 	return mysqli_query($conexao, $query);
 }
+function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usado) {
+	$query = "update produtos set nome='{$nome}', preco = {$preco}, descricao = '{$descricao}', categoria_id = '{$categoria_id}', usado = {$usado} where id = '{$id}'";
+	return mysqli_query($conexao, $query);
+}
+
+function buscaProduto($conexao, $id) {
+	$query = "select * from produtos where id = {$id}";
+	$resultado = mysqli_query($conexao, $query);
+	return mysqli_fetch_assoc($resultado);
+}
 
 function listaProdutos($conexao)
 {
