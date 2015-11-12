@@ -1,8 +1,6 @@
 <?php include ('include/head.php');?>
 
 <h1>Bem vindo!</h1>
-<h2>login</h2>
-
 
 <?php
 	if(isset($_GET["login"]) && $_GET["login"]==true) {
@@ -20,6 +18,11 @@
 	}
 ?>
 
+<?php if(isset($_COOKIE["usuario_logado"])) {?>
+	<p class="text-success">Você está logado como <?=$_COOKIE["usuario_logado"]?></p>
+<?php } else {?>
+
+<h2>login</h2>
 <form action="login.php" method="post">
 	<table class="table">
 		<tr>
@@ -35,4 +38,6 @@
 		</tr>
 	</table>
 </form>
+<?php } ?>
+
 <?php include ('include/footer.php') ?>

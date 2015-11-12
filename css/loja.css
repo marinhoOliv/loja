@@ -6,6 +6,6 @@ body {
 	padding: 40px 15px;
 }
 
-.principal p {
+h1, h2, .principal p {
 	text-align: center;
 }
