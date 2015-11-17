@@ -1,4 +1,7 @@
-<?php include ('include/head.php');?>
+<?php
+include ('include/head.php');
+include ('include/logica-usuario.php');
+?>
 
 <h1>Bem vindo!</h1>
 
@@ -18,8 +21,16 @@
 	}
 ?>
 
-<?php if(isset($_COOKIE["usuario_logado"])) {?>
-	<p class="text-success">Você está logado como <?=$_COOKIE["usuario_logado"]?></p>
+<?php
+	if(isset($_GET["falhaDeSeguranca"]) && $_GET["falhaDeSeguranca"]==true) {
+?>
+	<p class="text-danger">Você não tem acesso a essa funcionalidade!</p>
+<?php 
+	}
+?>
+
+<?php if(usuarioEstaLogado()) {?>
+	<p class="text-success">Você está logado como <?= usuarioLogado() ?></p>
 <?php } else {?>
 
 <h2>login</h2>

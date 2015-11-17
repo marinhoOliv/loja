@@ -1,8 +1,11 @@
 <?php include ('include/head.php');
 include ('include/conecta.php');
 include ('include/banco-categoria.php');
+include ('include/logica-usuario.php');
 
-	$categorias = listaCategorias ($conexao);
+verificaUsuario();
+
+$categorias = listaCategorias ($conexao);
 
 ?>
 <h1>Formulário de produto</h1>
