@@ -6,31 +6,31 @@ include ('include/logica-usuario.php');
 <h1>Bem vindo!</h1>
 
 <?php
+	if(isset($_GET["logout"]) && $_GET["logout"]==true) {
+?>
+	<p class="text-success">Deslogado com sucesso!</p>
+<?php } ?>
+
+<?php
 	if(isset($_GET["login"]) && $_GET["login"]==true) {
 ?>
 	<p class="text-success">Logado com sucesso!</p>
-<?php 
-	}
-?>
+<?php } ?>
 
 <?php
 	if(isset($_GET["login"]) && $_GET["login"]==false) {
 ?>
 	<p class="text-danger">Usuário ou senha inválida!</p>
-<?php 
-	}
-?>
+<?php } ?>
 
 <?php
 	if(isset($_GET["falhaDeSeguranca"]) && $_GET["falhaDeSeguranca"]==true) {
 ?>
 	<p class="text-danger">Você não tem acesso a essa funcionalidade!</p>
-<?php 
-	}
-?>
+<?php } ?>
 
 <?php if(usuarioEstaLogado()) {?>
-	<p class="text-success">Você está logado como <?= usuarioLogado() ?></p>
+	<p class="text-success">Você está logado como <?= usuarioLogado() ?> <a href="logout.php">Deslogar</a></p>
 <?php } else {?>
 
 <h2>login</h2>
