@@ -1,21 +1,19 @@
 <?php 	
 include ('include/head.php');
 include ('include/conecta.php'); 
-include ('include/banco-produto.php'); 
+include ('include/banco-produto.php');
+include ('include/logica-usuario.php'); 
+
+verificaUsuario();
 ?>
 
-<?php  
-	/* Pra saber se existe o valor preciso chamar uma funcao
-	** Se essa chave existe, qual chave? "removido" e que array? "$_GET"
-	** e essa chave e esse array tem esse valor $_GET["removido"]
-	** então mostra a mensagem.
-	*/
-	if(array_key_exists("removido", $_GET) && $_GET["removido"]==true) {
-?>	
-	<p class="text-success">produto apagado com sucesso!</p>
 <?php
-	}
+	if(isset($_SESSION["success"])) {
 ?>
+	<p class="text-success"><?= $_SESSION["success"]?></p>
+<?php
+	unset($_SESSION["success"]);
+}?>
 
 <table class="table table-striped table-bordered">
 	<?php
