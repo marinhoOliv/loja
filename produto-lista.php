@@ -2,6 +2,7 @@
 include ('include/head.php');
 include ('include/conecta.php'); 
 include ('include/banco-produto.php');
+verificaUsuario();
 ?>
 
 <table class="table table-striped table-bordered">
