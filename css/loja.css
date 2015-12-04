@@ -9,3 +9,7 @@ body {
 h1, h2, .principal p {
 	text-align: center;
 }
+
+.marg-right5 {
+	margin-right: 5px;
+}

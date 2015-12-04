@@ -2,18 +2,7 @@
 include ('include/head.php');
 include ('include/conecta.php'); 
 include ('include/banco-produto.php');
-include ('include/logica-usuario.php'); 
-
-verificaUsuario();
 ?>
-
-<?php
-	if(isset($_SESSION["success"])) {
-?>
-	<p class="text-success"><?= $_SESSION["success"]?></p>
-<?php
-	unset($_SESSION["success"]);
-}?>
 
 <table class="table table-striped table-bordered">
 	<?php

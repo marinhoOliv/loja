@@ -1,26 +1,8 @@
 <?php
 include ('include/head.php');
-include ('include/logica-usuario.php');
 ?>
-
 
 <h1>Bem vindo!</h1>
-
-<?php
-	if(isset($_SESSION["success"])) {
-?>
-	<p class="text-success"><?= $_SESSION["success"]?></p>
-<?php
-	unset($_SESSION["success"]);
-}?>
-
-<?php
-	if(isset($_SESSION["danger"])) {
-?>
-	<p class="text-danger"><?= $_SESSION["danger"]?></p>
-<?php
-	unset($_SESSION["danger"]);
-}?>
 
 <?php if(usuarioEstaLogado()) {?>
 	<p class="text-success">Você está logado como <?= usuarioLogado() ?> <a href="logout.php">Deslogar</a></p>

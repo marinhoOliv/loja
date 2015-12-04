@@ -2,7 +2,6 @@
 include ('include/head.php');
 include ('include/conecta.php');
 include ('include/banco-produto.php');
-include ('include/logica-usuario.php');
 
 verificaUsuario();
 

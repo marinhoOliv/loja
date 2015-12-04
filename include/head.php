@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<?php 
+error_reporting(E_ALL ^ E_NOTICE);
+include ('include/logica-usuario.php');
+include ('include/mostra-alerta.php');
+?>
+<html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -20,7 +25,19 @@
 					<li><a href="produto-lista.php">Produtos</a></li>
 				</ul>
 			</nav>
-		</header>
-	</nav>
+			<?php if(usuarioEstaLogado()) {?>
+				<nav>
+					<ul class="nav navbar-nav navbar-right">
+						<!--li><a href="javascript:void(0);" class=""><i class="glyphicon glyphicon-edit marg-right5"></i>Configuracoes</a></li-->
+						<li><a href="logout.php" class=""><i class="glyphicon glyphicon-log-out marg-right5"></i>Sair</a></li>
+					</ul>
+				</nav>
+			<?php } ?>
+		</div>
+	</header>
 	<section class="container container-fluid">
 		<div class="principal">
+		<?php 
+		mostraAlerta("success");
+		mostraAlerta("danger");
+		?>
