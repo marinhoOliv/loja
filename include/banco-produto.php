@@ -12,12 +12,13 @@ function insereProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usad
 	$dadosScape = array($nome, $preco, $descricao);
 	$escapado = realScape($conexao, $dadosScape);
 	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$escapado[0]}', {$escapado[1]}, '{$escapado[2]}', {$categoria_id}, {$usado})";
-	var_dump($query);die;
 	return mysqli_query($conexao, $query);
 }
 
 function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usado) {
-	$query = "update produtos set nome='{$nome}', preco = {$preco}, descricao = '{$descricao}', categoria_id = '{$categoria_id}', usado = {$usado} where id = '{$id}'";
+	$dadosScape = array($nome, $preco, $descricao);
+	$escapado = realScape($conexao, $dadosScape);
+	$query = "update produtos set nome='{$escapado[0]}', preco = {$escapado[1]}, descricao = '{$escapado[2]}', categoria_id = '{$categoria_id}', usado = {$usado} where id = '{$id}'";
 	return mysqli_query($conexao, $query);
 }
 
