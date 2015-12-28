@@ -1,4 +1,4 @@
-<?php include ('include/head.php') ?>
+<?php require_once ('include/head.php') ?>
 <section class="content">
 	<ol class="breadcrumb">
 	  <li><a href="#">Home</a></li>

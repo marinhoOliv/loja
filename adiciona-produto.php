@@ -1,7 +1,6 @@
 <?php 
-include ('include/head.php');
-include ('include/conecta.php');
-include ('include/banco-produto.php');
+require_once ('include/head.php');
+require_once ('include/banco-produto.php');
 
 verificaUsuario();
 

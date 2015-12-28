@@ -1,5 +1,5 @@
 <?php
-include ('include/head.php');
+require_once ('include/head.php');
 ?>
 
 <h1>Bem vindo!</h1>
@@ -26,4 +26,4 @@ include ('include/head.php');
 </form>
 <?php } ?>
 
-<?php include ('include/footer.php') ?>
+<?php require_once ('include/footer.php') ?>

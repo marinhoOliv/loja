@@ -1,6 +1,5 @@
-<?php include ('include/head.php');
-include ('include/conecta.php');
-include ('include/banco-categoria.php');
+<?php require_once ('include/head.php');
+require_once ('include/banco-categoria.php');
 
 verificaUsuario();
 

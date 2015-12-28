@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php 
 error_reporting(E_ALL ^ E_NOTICE);
-include ('include/logica-usuario.php');
-include ('include/mostra-alerta.php');
+require_once ('include/logica-usuario.php');
+require_once ('include/mostra-alerta.php');
 ?>
 <html lang="pt-br">
 <head>
@@ -23,6 +23,7 @@ include ('include/mostra-alerta.php');
 					<li><a href="sobre.php">Sobre</a></li>
 					<li><a href="produto-formulario.php">Adiciona Produto</a></li>
 					<li><a href="produto-lista.php">Produtos</a></li>
+					<li><a href="contato.php">Contato</a></li>
 				</ul>
 			</nav>
 			<?php if(usuarioEstaLogado()) {?>
