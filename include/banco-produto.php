@@ -9,10 +9,10 @@ function realScape($conexao, $dados) {
 	return $retorno;
 }
 
-function insereProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usado) {
-	$dadosScape = array($nome, $preco, $descricao);
+function insereProduto($conexao, Produto $produto) {
+	$dadosScape = array($produto->nome, $produto->preco, $produto->descricao);
 	$escapado = realScape($conexao, $dadosScape);
-	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$escapado[0]}', {$escapado[1]}, '{$escapado[2]}', {$categoria_id}, {$usado})";
+	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$escapado[0]}', {$escapado[1]}, '{$escapado[2]}', {$produto->categoria_id}, {$produto->usado})";
 	return mysqli_query($conexao, $query);
 }
 
