@@ -1,6 +1,7 @@
 <?php 	
 require_once ('include/head.php');
 require_once ('include/banco-produto.php');
+require_once ('class/produto.php');
 verificaUsuario();
 ?>
 

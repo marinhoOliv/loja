@@ -7,13 +7,12 @@ require_once ('class/categoria.php');
 verificaUsuario();
 
 $produto = new Produto;
-$produto = new Categoria;
-
-$categoria->id = $_POST['categoria_id'];
+$categoria = new Categoria;
 
 $produto->nome = $_POST["nome"];
 $produto->preco = $_POST["preco"];
 $produto->descricao = $_POST["descricao"];
+$categoria->id = $_POST['categoria_id'];
 $produto->categoria = $categoria;
 
 if (array_key_exists('usado', $_POST)) {

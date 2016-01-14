@@ -1,5 +1,6 @@
 <?php require_once("include/head.php") ?>
 
+<h1>Contato</h1>
 <form action="envia-contato.php" method="post">
 	<table class="table">
 		<tr>

@@ -1,10 +1,12 @@
-<?php require_once ('include/head.php');
+<?php 
+require_once ('include/head.php');
 require_once ('include/banco-categoria.php');
+require_once ('class/produto.php');
 
 verificaUsuario();
 
-$produto = array("nome" => "", "descricao" => "", "preco" => "", "categoria" => "1");
-$usado = "";
+//$produto = array("nome" => "", "descricao" => "", "preco" => "", "categoria" => "1");
+//$usado = "";
 $categorias = listaCategorias ($conexao);
 ?>
 <h1>Formulário de produto</h1>
