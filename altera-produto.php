@@ -9,7 +9,7 @@ $categoria = new Categoria;
 
 $produto->id = $_POST['id'];
 $produto->nome = $_POST["nome"];
-$produto->preco = $_POST["preco"];
+$produto->setPreco($_POST["preco"]);
 $produto->descricao = $_POST["descricao"];
 $categoria->id = $_POST['categoria_id'];
 $produto->categoria = $categoria;
@@ -24,7 +24,7 @@ $produto->usado = $usado;
 
 if(alteraProduto($conexao, $produto)) { 
 
-echo "<p class='text-success'>Produto "; echo $produto->nome . ", ". $produto->preco; echo " foi alterado!</p>";
+echo "<p class='text-success'>Produto "; echo $produto->nome . ", ". $produto->setPreco; echo " foi alterado!</p>";
 ?>
 
 <?php 

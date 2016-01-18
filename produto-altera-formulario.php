@@ -9,7 +9,7 @@ $categoria = new Categoria;
 $produto->id = $_GET['id'];
 $buscaProduto = buscaproduto($conexao, $produto);
 $produto->nome = $buscaProduto['nome'];
-$produto->preco = $buscaProduto['preco'];
+$produto->setPreco($buscaProduto['preco']);
 $produto->descricao = $buscaProduto['descricao'];
 $categorias = listaCategorias ($conexao);
 $produto->usado = $buscaProduto['usado']  ? "checked='checked'" : "";

@@ -10,7 +10,7 @@ $produto = new Produto;
 $categoria = new Categoria;
 
 $produto->nome = $_POST["nome"];
-$produto->preco = $_POST["preco"];
+$produto->setPreco($_POST["preco"]);
 $produto->descricao = $_POST["descricao"];
 $categoria->id = $_POST['categoria_id'];
 $produto->categoria = $categoria;
@@ -24,7 +24,7 @@ if (array_key_exists('usado', $_POST)) {
 $produto->usado = $usado;
 
 if(insereproduto($conexao, $produto)) { 
-	echo "<p class='text-success'>Produto "; echo $produto->nome . ", ". $produto->preco; echo " adicionado com sucesso!</p>";
+	echo "<p class='text-success'>Produto "; echo $produto->nome . ", ". $produto->getPreco(); echo " adicionado com sucesso!</p>";
 ?>
 
 <?php 

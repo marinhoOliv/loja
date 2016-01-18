@@ -12,14 +12,14 @@ function realScape($conexao, $dados) {
 }
 
 function insereProduto($conexao, Produto $produto) {
-	$dadosScape = array($produto->nome, $produto->preco, $produto->descricao);
+	$dadosScape = array($produto->nome, $produto->getPreco(), $produto->descricao);
 	$escapado = realScape($conexao, $dadosScape);
 	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$escapado[0]}', {$escapado[1]}, '{$escapado[2]}', {$produto->categoria->id}, {$produto->usado})";
 	return mysqli_query($conexao, $query);
 }
 
 function alteraProduto($conexao, Produto $produto) {
-	$dadosScape = array($produto->nome, $produto->preco, $produto->descricao);
+	$dadosScape = array($produto->nome, $produto->getPreco(), $produto->descricao);
 	$escapado = realScape($conexao, $dadosScape);
 	$query = "update produtos set nome='{$escapado[0]}', preco = {$escapado[1]}, descricao = '{$escapado[2]}', categoria_id = '{$produto->categoria->id}', usado = {$produto->usado} where id = '{$produto->id}'";
 	return mysqli_query($conexao, $query);
@@ -42,7 +42,7 @@ function listaProdutos($conexao)
 		$categoria->nome = $produto_atual['categoria_nome'];
 		$produto->id = $produto_atual['id'];
 		$produto->nome = $produto_atual['nome'];
-		$produto->preco = $produto_atual['preco'];
+		$produto->setPreco($produto_atual['preco']);
 		$produto->descricao = $produto_atual['descricao'];
 		$produto->categoria = $categoria;
 		$produto->usado = $produto_atual['usado'];

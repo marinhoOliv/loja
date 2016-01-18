@@ -12,7 +12,8 @@ verificaUsuario();
 	?>
 	<tr>
 		<td><?= $produto->nome ?></td>
-		<td><?= $produto->preco ?></td>
+		<td><?= $produto->getPreco() ?></td>
+		<td><?= $produto->valorComDesconto() ?></td>
 		<td><?= substr($produto->descricao, 0, 40)?></td>
 		<td><?=$produto->categoria->nome?></td>
 		<td><a href="produto-altera-formulario.php?id=<?=$produto->id?>" class="btn btn-primary btn-sm">alterar</a></td>

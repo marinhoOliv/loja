@@ -11,7 +11,7 @@
 		Preço:	
 	</td>
 	<td>
-		<input class="form-control" type="number" name="preco" value="<?=$produto->preco?>">	
+		<input class="form-control" type="number" name="preco" value="<?=$produto->setPreco() ?>">	
 	</td>
 </tr>
 <tr>
