@@ -24,7 +24,7 @@ if (array_key_exists('usado', $_POST)) {
 $produto->usado = $usado;
 
 if(insereproduto($conexao, $produto)) { 
-	echo "<p class='text-success'>Produto "; echo $produto->nome . ", ". $produto->getPreco(); echo " adicionado com sucesso!</p>";
+	echo "<p class='text-success'>Produto "; echo $produto->nome . ", ". $produto->setPreco($preco); echo " adicionado com sucesso!</p>";
 ?>
 
 <?php 
