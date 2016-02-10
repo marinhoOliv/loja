@@ -7,12 +7,12 @@ require_once ('class/categoria.php');
 $produto = new Produto;
 $categoria = new Categoria;
 
-$produto->id = $_POST['id'];
-$produto->nome = $_POST["nome"];
+$produto->setId($_POST['id']);
+$produto->setNome($_POST["nome"]);
 $produto->setPreco($_POST["preco"]);
-$produto->descricao = $_POST["descricao"];
-$categoria->id = $_POST['categoria_id'];
-$produto->categoria = $categoria;
+$produto->setDescricao($_POST["descricao"]);
+$categoria->setId($_POST['categoria_id']);
+$produto->setCategoria($categoria);
 
 if (array_key_exists('usado', $_POST)) {
 	$usado = 'true';
@@ -20,11 +20,11 @@ if (array_key_exists('usado', $_POST)) {
 	$usado = 'false';
 }
 
-$produto->usado = $usado;
+$produto->setUsado($usado);
 
 if(alteraProduto($conexao, $produto)) { 
 
-echo "<p class='text-success'>Produto "; echo $produto->nome . ", ". $produto->setPreco; echo " foi alterado!</p>";
+echo "<p class='text-success'>Produto "; echo $produto->getNome() . ", ". $produto->getPreco(); echo " foi alterado!</p>";
 ?>
 
 <?php 
@@ -32,7 +32,7 @@ echo "<p class='text-success'>Produto "; echo $produto->nome . ", ". $produto->s
 		$msg = mysqli_error($conexao);
 ?>
 
-<p class="text-danger">Produto <?= $produto->nome ?> não foi alterado: <?= $msg ?></p>
+<p class="text-danger">Produto <?= $produto->setNome() ?> não foi alterado: <?= $msg ?></p>
 
 <?php 
 	}

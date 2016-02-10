@@ -2,6 +2,7 @@
 require_once ('include/head.php');
 require_once ('include/banco-categoria.php');
 require_once ('class/produto.php');
+require_once ('class/categoria.php');
 
 verificaUsuario();
 

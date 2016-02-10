@@ -12,21 +12,21 @@ function realScape($conexao, $dados) {
 }
 
 function insereProduto($conexao, Produto $produto) {
-	$dadosScape = array($produto->nome, $produto->getPreco(), $produto->descricao);
+	$dadosScape = array($produto->getNome(), $produto->getPreco(), $produto->getDescricao());
 	$escapado = realScape($conexao, $dadosScape);
-	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$escapado[0]}', {$escapado[1]}, '{$escapado[2]}', {$produto->categoria->id}, {$produto->usado})";
+	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$escapado[0]}', {$escapado[1]}, '{$escapado[2]}', {$produto->getCategoria()->getId()}, {$produto->setUsado})";
 	return mysqli_query($conexao, $query);
 }
 
 function alteraProduto($conexao, Produto $produto) {
-	$dadosScape = array($produto->nome, $produto->getPreco(), $produto->descricao);
+	$dadosScape = array($produto->getNome(), $produto->getPreco(), $produto->getDescricao());
 	$escapado = realScape($conexao, $dadosScape);
-	$query = "update produtos set nome='{$escapado[0]}', preco = {$escapado[1]}, descricao = '{$escapado[2]}', categoria_id = '{$produto->categoria->id}', usado = {$produto->usado} where id = '{$produto->id}'";
+	$query = "update produtos set nome='{$escapado[0]}', preco = {$escapado[1]}, descricao = '{$escapado[2]}', categoria_id = '{$produto->getCategoria()->getId()}', usado = {$produto->isUsado()} where id = '{$produto->getId()}'";
 	return mysqli_query($conexao, $query);
 }
 
 function buscaProduto($conexao, Produto $produto) {
-	$query = "select * from produtos where id = {$produto->id}";
+	$query = "select * from produtos where id = {$produto->getId()}";
 	$resultado = mysqli_query($conexao, $query);
 	return mysqli_fetch_assoc($resultado);
 }
@@ -39,13 +39,13 @@ function listaProdutos($conexao)
 	while($produto_atual = mysqli_fetch_assoc($resultado)) {
 		$produto = new Produto;
 		$categoria = new Categoria;
-		$categoria->nome = $produto_atual['categoria_nome'];
-		$produto->id = $produto_atual['id'];
-		$produto->nome = $produto_atual['nome'];
+		$categoria->getNome($produto_atual['categoria_nome']);
+		$produto->setId($produto_atual['id']);
+		$produto->setNome($produto_atual['nome']);
 		$produto->setPreco($produto_atual['preco']);
-		$produto->descricao = $produto_atual['descricao'];
-		$produto->categoria = $categoria;
-		$produto->usado = $produto_atual['usado'];
+		$produto->setDescricao($produto_atual['descricao']);
+		$produto->setCategoria($categoria);
+		$produto->setUsado($produto_atual['usado']);
 
 		array_push($produtos, $produto);
 	}
@@ -53,6 +53,6 @@ function listaProdutos($conexao)
 }
 
 function removeProduto($conexao, Produto $produto) {
-	$query = "delete from produtos where id = {$produto->id}";
+	$query = "delete from produtos where id = {$produto->getId()}";
 	return mysqli_query($conexao, $query);
 }

@@ -9,11 +9,11 @@ verificaUsuario();
 $produto = new Produto;
 $categoria = new Categoria;
 
-$produto->nome = $_POST["nome"];
+$produto->setNome($_POST["nome"]);
 $produto->setPreco($_POST["preco"]);
-$produto->descricao = $_POST["descricao"];
-$categoria->id = $_POST['categoria_id'];
-$produto->categoria = $categoria;
+$produto->setDescricao($_POST["descricao"]);
+$categoria->setId($_POST['categoria_id']);
+$produto->setCategoria($categoria);
 
 if (array_key_exists('usado', $_POST)) {
 	$usado = 'true';
@@ -21,10 +21,10 @@ if (array_key_exists('usado', $_POST)) {
 	$usado = 'false';
 }
 
-$produto->usado = $usado;
+$produto->isUsado() = $usado;
 
 if(insereproduto($conexao, $produto)) { 
-	echo "<p class='text-success'>Produto "; echo $produto->nome . ", ". $produto->setPreco($preco); echo " adicionado com sucesso!</p>";
+	echo "<p class='text-success'>Produto "; echo $produto->setNome() . ", ". $produto->setPreco($preco); echo " adicionado com sucesso!</p>";
 ?>
 
 <?php 
@@ -32,7 +32,7 @@ if(insereproduto($conexao, $produto)) {
 		$msg = mysqli_error($conexao);
 ?>
 
-<p class="text-danger">Produto <?= $produto->nome ?> não foi adicionado: <?= $msg ?></p>
+<p class="text-danger">Produto <?= $produto->setNome() ?> não foi adicionado: <?= $msg ?></p>
 
 <?php 
 	}

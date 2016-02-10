@@ -6,20 +6,20 @@ require_once ('class/produto.php');
 $produto = new Produto;
 $categoria = new Categoria;
 
-$produto->id = $_GET['id'];
+$produto->setId($_GET['id']);
 $buscaProduto = buscaproduto($conexao, $produto);
-$produto->nome = $buscaProduto['nome'];
+$produto->setNome($buscaProduto['nome']);
 $produto->setPreco($buscaProduto['preco']);
-$produto->descricao = $buscaProduto['descricao'];
+$produto->setDescricao($buscaProduto['descricao']);
 $categorias = listaCategorias ($conexao);
-$produto->usado = $buscaProduto['usado']  ? "checked='checked'" : "";
-$categoria->id = $buscaProduto['categoria_id'];
-$produto->categoria = $categoria;
+$produto->setUsado($buscaProduto['usado']  ? "checked='checked'" : "");
+$categoria->setId($buscaProduto['categoria_id']);
+$produto->setCategoria($categoria);
 
 ?>
 <h1>Alterando produto</h1>
 	<form action="altera-produto.php" method="post">
-	    <input type="hidden" name="id" value="<?=$produto->id?>"/>
+	    <input type="hidden" name="id" value="<?=$produto->getId()?>"/>
 		<table class="table">
 			<?php include ('include/produto-formulario-base.php'); ?>
 			<tr>
